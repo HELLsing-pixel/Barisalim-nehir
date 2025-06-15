@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Barışalım mı?</title>
+  <style>
+    body { margin:0; padding:0; height:100vh;
+      background: linear-gradient(135deg,#ffdee9,#b5fffc);
+      font-family:Arial,sans-serif;
+      display:flex; flex-direction:column;
+      align-items:center; justify-content:center;
+      text-align:center;
+    }
+    h1 { font-size:2.5rem; color:#333; }
+    button { font-size:1.2rem; padding:0.8rem 2rem;
+      margin:0 1rem; border:none;
+      border-radius:30px; cursor:pointer;
+      transition:all .3s ease;
+    }
+    #yes { background:#ff6b6b; color:#fff; }
+    #no { background:#6b6bff; color:#fff; }
+  </style>
+</head>
+<body>
+  <h1>Canım sevgilim, <span style="color:#ff3366">Nehir</span></h1>
+  <h2>Barışalım mı?</h2>
+  <div>
+    <button id="yes">Evet</button>
+    <button id="no">Hayır</button>
+  </div>
+  <script>
+    const noBtn = document.getElementById('no'),
+          yesBtn = document.getElementById('yes');
+    let noClicks = 0;
+
+    noBtn.addEventListener('click', () => {
+      noClicks++;
+      const sNo = Math.max(.3, 1 - noClicks * .1),
+            sYes = 1 + noClicks * .1;
+      noBtn.style.transform = \`scale(\${sNo})\`;
+      yesBtn.style.transform = \`scale(\${sYes})\`;
+      if (noClicks > 5) yesBtn.style.transition = 'all .5s ease';
+    });
+
+    yesBtn.addEventListener('click', () => {
+      document.body.innerHTML = \`
+        <div style="padding:2rem;text-align:center;">
+          <h1 style="font-size:3rem;">Seni çok seviyorum meleğim 💓💓💓</h1>
+          <p style="font-size:2rem;color:#ff3366;margin-top:1rem;">❤️ Nehir ❤️</p>
+        </div>\`;
+      document.body.style.background = '#ffe6e6';
+    });
+  </script>
+</body>
+</html>
